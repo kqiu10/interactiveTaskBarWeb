@@ -49,7 +49,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    onSaveExpenseData();
+    onSaveExpenseData(expenseDate);
     setEnteredAmount("");
     setEnteredDate("");
     setEnteredTitle("");
@@ -59,12 +59,13 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label>{enteredTitle}</label>
-          <input type="text" onChange={titleChangeHanlder} />
+          <label>title</label>
+          <input value={ enteredTitle}type="text" onChange={titleChangeHanlder} />
         </div>
         <div className="new-expense__control">
-          <label>{enteredAmount}</label>
+          <label>Amount</label>
           <input
+            value={enteredAmount}
             type="number"
             min="0.01"
             step="0.01"
@@ -72,12 +73,13 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
           />
         </div>
         <div className="new-expense__control">
-          <label>{enteredDate}</label>
+          <label>Date</label>
           <input
             type="date"
             min="2019-01-01"
             max="2022-12-31"
             onChange={DateChangeHanlder}
+            value={enteredDate}
           />
         </div>
       </div>
