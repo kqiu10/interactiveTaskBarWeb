@@ -45,12 +45,12 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const expenseDate = {
+    const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
-    onSaveExpenseData(expenseDate);
+    onSaveExpenseData(expenseData);
     setEnteredAmount("");
     setEnteredDate("");
     setEnteredTitle("");
