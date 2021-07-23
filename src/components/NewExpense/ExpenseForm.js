@@ -4,6 +4,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [showAddExpense, setShowAddExpense] = useState(true);
 
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: '',
@@ -55,6 +56,16 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     setEnteredTitle("");
   };
 
+  //showAddExpense function
+  const AddExpenseHandler = () => {
+    setShowAddExpense((prevStatus) => {
+      return !prevStatus;
+    })
+  }
+  if (showAddExpense === true) {
+    return <button onClick={AddExpenseHandler}>Add New Expense</button>
+  }
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
@@ -84,6 +95,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type='reset' onClick={AddExpenseHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
