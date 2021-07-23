@@ -1,10 +1,18 @@
-import './Chart.css'
-const Chart = () => {
+import "./Chart.css";
+import ChartBar from "./ChartBar";
+const Chart = ({ dataPoints }) => {
   return (
-    <div>
-
+    <div className="chart">
+      {dataPoints.map((dataPoint) => (
+        <ChartBar
+          key={dataPoint.id}
+          value={dataPoint.value}
+          maxValue={null}
+          label={dataPoint.label}
+        />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Chart
+export default Chart;
